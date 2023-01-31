@@ -7,7 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 public class BallPanel extends JPanel{
 
-    private ArrayList balls = new ArrayList(20);
+    private ArrayList<Ball> balls = new ArrayList<Ball>();
+
     private JButton addBall = new JButton("Add");
 
 
@@ -31,18 +32,28 @@ public class BallPanel extends JPanel{
         });
 
 
-        this.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                   for(int i = 0; i <= balls.size(); i++) {
-                      if(balls.get(i).deleteBall(e.getX(), e.getY()) == true){
-                          balls.remove(i);
-                          i--;
-                      }
-                }
+           this.addMouseListener(new MouseAdapter() {
+               @Override
+               public void mouseClicked(MouseEvent e) {
 
-            }
-        });
+                   for (int i = 0; i < balls.size(); i++) {
+                       System.out.println(balls.get(i).deleteBall(e.getX(), e.getY()));
+                       System.out.println(e.getX() + ", " + e.getY());
+
+                       if (balls.get(i).deleteBall(e.getX(), e.getY()) == true) {
+                           System.out.println("You got it");
+                           balls.remove(i);
+                           i--;
+                       }
+
+                   }
+
+
+               }
+           });
+
+
+
     }
 
 
@@ -60,10 +71,11 @@ public class BallPanel extends JPanel{
             Thread.sleep(10);
         }
         catch(Exception e){
-            System.out.println(e.toString());
+            //System.out.println(e.toString());
         }
 
         repaint();
 
     }
+
 }

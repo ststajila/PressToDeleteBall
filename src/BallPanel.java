@@ -9,6 +9,8 @@ public class BallPanel extends JPanel{
 
     private ArrayList<Ball> balls = new ArrayList<Ball>();
 
+    private Ball ball = new Ball(30, 40, 50);
+
     private JButton addBall = new JButton("Add");
 
 
@@ -22,6 +24,7 @@ public class BallPanel extends JPanel{
         add(addBall, BorderLayout.SOUTH);
 
         setBackground(Color.BLACK);
+        setFocusable(true);
 
 
         addBall.addActionListener(new ActionListener() {
@@ -34,9 +37,13 @@ public class BallPanel extends JPanel{
 
            this.addMouseListener(new MouseAdapter() {
                @Override
-               public void mouseClicked(MouseEvent e) {
+               public void mousePressed(MouseEvent e) {
 
                    for (int i = 0; i < balls.size(); i++) {
+                       if(ball.deleteBall(e.getX(), e.getY()) == true){
+                           System.out.println("Inside");
+                       }
+
                        System.out.println(balls.get(i).deleteBall(e.getX(), e.getY()));
                        System.out.println(e.getX() + ", " + e.getY());
 
@@ -60,6 +67,9 @@ public class BallPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
+
+        ball.drawBall(g);
+
 
         for (int i = 0; i < balls.size(); i++){
             balls.get(i).drawBall(g);

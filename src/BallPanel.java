@@ -7,11 +7,16 @@ import javax.swing.*;
 import java.awt.*;
 public class BallPanel extends JPanel{
 
-    private ArrayList balls = new ArrayList();
+    private ArrayList balls = new ArrayList(20);
     private JButton addBall = new JButton("Add");
 
 
     public BallPanel(){
+
+        for (int i = 0; i < balls.size(); i++){
+            balls.add(new Ball());
+        }
+
         setLayout(new BorderLayout());
         add(addBall, BorderLayout.SOUTH);
 
@@ -25,21 +30,15 @@ public class BallPanel extends JPanel{
             }
         });
 
-        for (int i = 0; i < 20; i++){
-            balls.add(new Ball());
-        }
 
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                @Override
-                public void mouseClicked (MouseEvent e){
                    for(int i = 0; i <= balls.size(); i++) {
                       if(balls.get(i).deleteBall(e.getX(), e.getY()) == true){
                           balls.remove(i);
                           i--;
-                      };
-                   }
+                      }
                 }
 
             }

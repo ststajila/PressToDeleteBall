@@ -59,7 +59,7 @@ public class Ball {
     public boolean deleteBall(double x1, double y1){
         double h = (y + (y + size))/2;
         double k = (x + (x + size))/2;
-        double r = (x + size)-k;
+        double r = size/2;
 
         if (Math.pow((x1-h), 2) + Math.pow((y1-k), 2)  <= Math.pow(r, 2)){
             return true;

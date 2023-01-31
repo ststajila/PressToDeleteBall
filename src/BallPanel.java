@@ -16,7 +16,7 @@ public class BallPanel extends JPanel{
 
     public BallPanel(){
 
-        for (int i = 0; i < balls.size(); i++){
+        for (int i = 0; i < 10; i++){
             balls.add(new Ball());
         }
 
@@ -39,13 +39,15 @@ public class BallPanel extends JPanel{
                @Override
                public void mousePressed(MouseEvent e) {
 
-                   for (int i = 0; i < balls.size(); i++) {
-                       if(ball.deleteBall(e.getX(), e.getY()) == true){
-                           System.out.println("Inside");
-                       }
+                   if(ball.deleteBall(e.getX(), e.getY()) == true){
+                       System.out.println("Inside");
+                   }
 
-                       System.out.println(balls.get(i).deleteBall(e.getX(), e.getY()));
-                       System.out.println(e.getX() + ", " + e.getY());
+
+                   for (int i = 0; i < balls.size(); i++) {
+
+                      // System.out.println(balls.get(i).deleteBall(e.getX(), e.getY()));
+                       //System.out.println(e.getX() + ", " + e.getY());
 
                        if (balls.get(i).deleteBall(e.getX(), e.getY()) == true) {
                            System.out.println("You got it");
